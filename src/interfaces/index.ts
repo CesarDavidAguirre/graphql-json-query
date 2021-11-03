@@ -1,0 +1,1 @@
+export { queryObject } from './queryObject';
