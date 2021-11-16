@@ -1,6 +1,6 @@
 {
   "name": "graphql-json-query",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "format": "eslint src/**/*.ts --fix"
   },
   "author": "cesar aguirre (kaiser)",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",

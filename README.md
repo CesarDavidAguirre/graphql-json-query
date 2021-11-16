@@ -2,8 +2,8 @@
 
 JSON TO QUERY (type query)
 
-```
-import { jsonToQuery } from 'graphql-json-query'
+```typescript
+import { jsonToQuery } from 'graphql-json-query';
 
 return jsonToQuery({
   schemaName: 'test',
@@ -21,20 +21,20 @@ return jsonToQuery({
       },
     },
   },
-  returnData: ['Id', 'name', { opcion: [' data ', 'EJEMPLO'] }],
-})
+  returnData: ['Id', 'name', { options: ['data', 'example'] }],
+});
 ```
 
 RESPONSE
 
-```
-query {test(data: {testString: "hola", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hola3", testNumber2: 57}}){Id name opcion : {  data  EJEMPLO  } }}
+```graphql
+query {test(data: {testString: "hola", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hola3", testNumber2: 57}}){Id name options : {  data  example  } }}
 ```
 
 JSON TO QUERY (type mutation)
 
-```
-import { jsonToMutation } from 'graphql-json-query'
+```typescript
+import { jsonToMutation } from 'graphql-json-query';
 
 return jsonToMutation({
   schemaName: 'test',
@@ -52,22 +52,22 @@ return jsonToMutation({
       },
     },
   },
-  returnData: ['Id', 'name', { opcion: [' data ', 'EJEMPLO'] }],
-})
+  returnData: ['Id', 'name', { options: ['data', 'example'] }],
+});
 ```
 
 RESPONSE
 
-```
-mutation {test(data: {testString: "hola", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hola3", testNumber2: 57}}){Id name opcion : {  data  EJEMPLO  } }}
+```graphql
+mutation {test(data: {testString: "hola", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hola3", testNumber2: 57}}){Id name options : {  data  example  } }}
 ```
 
 JSON TO QUERY (type own)
 
-```
-import { jsonToQueryOwn } from 'graphql-json-query'
+```typescript
+import { jsonToQueryOwn } from 'graphql-json-query';
 
-return jsonToQueryOwn("testQuery",{
+return jsonToQueryOwn('testQuery', {
   schemaName: 'test',
   jsonData: {
     data: {
@@ -83,12 +83,12 @@ return jsonToQueryOwn("testQuery",{
       },
     },
   },
-  returnData: ['Id', 'name', { opcion: [' data ', 'EJEMPLO'] }],
-})
+  returnData: ['Id', 'name', { options: ['data', 'example'] }],
+});
 ```
 
 RESPONSE
 
-```
-testQuery {test(data: {testString: "hola", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hola3", testNumber2: 57}}){Id name opcion : {  data  EJEMPLO  } }}
+```graphql
+testQuery {test(data: {testString: "hola", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hola3", testNumber2: 57}}){Id name options : {  data  example  } }}
 ```
