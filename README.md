@@ -1,4 +1,6 @@
-> **Librery for tranform object json in query or mutation graphql without variables**
+# Graphql-json-query
+
+> Library for transform object json in query or mutation graphql without variables
 
 JSON TO QUERY (type query)
 
@@ -9,14 +11,14 @@ return jsonToQuery({
   schemaName: 'test',
   jsonData: {
     data: {
-      testString: 'hola',
+      testString: 'hello',
       testNumber: 56,
       testBoolean: true,
       testNull: null,
       testUndefined: undefined,
       testArray: ['aaa', 'bbb'],
       testjson: {
-        testString2: 'hola3',
+        testString2: 'hello3',
         testNumber2: 57,
       },
     },
@@ -28,7 +30,7 @@ return jsonToQuery({
 RESPONSE
 
 ```graphql
-query {test(data: {testString: "hola", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hola3", testNumber2: 57}}){Id name options : {  data  example  } }}
+query {test(data: {testString: "hello", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hello3", testNumber2: 57}}){Id name options : {  data  example  } }}
 ```
 
 JSON TO QUERY (type mutation)
@@ -40,14 +42,14 @@ return jsonToMutation({
   schemaName: 'test',
   jsonData: {
     data: {
-      testString: 'hola',
+      testString: 'hello',
       testNumber: 56,
       testBoolean: true,
       testNull: null,
       testUndefined: undefined,
       testArray: ['aaa', 'bbb'],
       testjson: {
-        testString2: 'hola3',
+        testString2: 'hello3',
         testNumber2: 57,
       },
     },
@@ -59,7 +61,7 @@ return jsonToMutation({
 RESPONSE
 
 ```graphql
-mutation {test(data: {testString: "hola", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hola3", testNumber2: 57}}){Id name options : {  data  example  } }}
+mutation {test(data: {testString: "hello", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hello3", testNumber2: 57}}){Id name options : {  data  example  } }}
 ```
 
 JSON TO QUERY (type own)
@@ -71,14 +73,14 @@ return jsonToQueryOwn('testQuery', {
   schemaName: 'test',
   jsonData: {
     data: {
-      testString: 'hola',
+      testString: 'hello',
       testNumber: 56,
       testBoolean: true,
       testNull: null,
       testUndefined: undefined,
       testArray: ['aaa', 'bbb'],
       testjson: {
-        testString2: 'hola3',
+        testString2: 'hello3',
         testNumber2: 57,
       },
     },
@@ -90,5 +92,40 @@ return jsonToQueryOwn('testQuery', {
 RESPONSE
 
 ```graphql
-testQuery {test(data: {testString: "hola", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hola3", testNumber2: 57}}){Id name options : {  data  example  } }}
+testQuery {test(data: {testString: "hello", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hello3", testNumber2: 57}}){Id name options : {  data  example  } }}
+```
+
+MULTIPLE QUERYS EXAMPLE
+
+> this work in all cases
+
+```typescript
+import { jsonToQuery } from 'graphql-json-query';
+
+return jsonToQuery([{
+  schemaName: 'test1',
+  jsonData: {
+    data: "hello"
+  },
+  returnData: ['world'],
+},{
+  schemaName: 'test2',
+  jsonData: {
+    data: "hello"
+  },
+  returnData: ['world'],
+}]);}
+```
+
+RESPONSE
+
+```graphql
+query {
+  test1(data: "hello") {
+    world
+  }
+  test2(data: "hello") {
+    world
+  }
+}
 ```

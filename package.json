@@ -1,6 +1,6 @@
 {
   "name": "graphql-json-query",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
@@ -19,6 +19,11 @@
     "prettier": "^2.4.1",
     "typescript": "^4.4.4",
     "husky": "^7.0.4"
+  },
+  "homepage": "https://github.com/CesarDavidAguirre/graphql-json-query",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CesarDavidAguirre/graphql-json-query.git"
   },
   "husky": {
     "hooks": {
