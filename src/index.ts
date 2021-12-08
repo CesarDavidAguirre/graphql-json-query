@@ -1,4 +1,4 @@
-import { biuldJsonToData, buildReturnData } from './builders';
+import { buildJsonToData, buildReturnData } from './builders';
 
 interface queryObject {
   schemaName: string;
@@ -19,13 +19,13 @@ const jsonToQueryOwn = (queryName: string, data: queryObject | queryObject[]) =>
   if (Array.isArray(data)) {
     data.forEach((simpleData: queryObject) => {
       checkIsArray(simpleData.jsonData);
-      result += `${simpleData.schemaName}(${biuldJsonToData(simpleData.jsonData)}){${buildReturnData(
-        simpleData.returnData,
-      )}}`;
+      const parameters = Object.keys(simpleData.jsonData).length > 0 ? `(${buildJsonToData(simpleData.jsonData)})` : '';
+      result += `${simpleData.schemaName}${parameters}{${buildReturnData(simpleData.returnData)}}`;
     });
   } else {
     checkIsArray(data.jsonData);
-    result += `${data.schemaName}(${biuldJsonToData(data.jsonData)}){${buildReturnData(data.returnData)}}`;
+    const parameters = Object.keys(data.jsonData).length > 0 ? `(${buildJsonToData(data.jsonData)})` : '';
+    result += `${data.schemaName}${parameters}{${buildReturnData(data.returnData)}}`;
   }
   result += `}`;
   return result;
@@ -33,11 +33,7 @@ const jsonToQueryOwn = (queryName: string, data: queryObject | queryObject[]) =>
 
 const checkIsArray = (jsonData: object) => {
   if (Array.isArray(jsonData)) {
-    const error: TypeError = {
-      name: 'ERROR_NO_IS_JSON',
-      message: 'the parameter jsonData is a array and the funtion expect a JSON',
-    };
-    throw error;
+    throw new Error('the parameter jsonData is a array and the function expect a JSON');
   }
 };
 

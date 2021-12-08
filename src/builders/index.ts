@@ -1,2 +1,2 @@
-export { biuldJsonToData } from './jsonToData';
+export { buildJsonToData } from './jsonToData';
 export { buildReturnData } from './returnData';

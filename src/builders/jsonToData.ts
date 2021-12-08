@@ -4,7 +4,7 @@ const mapperTypesJson: { [key: string]: Function } = {
   number: (key: string, value: number) => mapperTypesJson.boolean(key, value),
   boolean: (key: string, value: boolean | number) => `${key}: ${value}`,
   object: (key: string, value: object) =>
-    Array.isArray(value) ? `${key}: [${buildArrayData(value)}]` : `${key}: {${biuldJsonToData(value)}}`,
+    Array.isArray(value) ? `${key}: [${buildArrayData(value)}]` : `${key}: {${buildJsonToData(value)}}`,
 };
 
 const mapperTypesArray: { [key: string]: Function } = {
@@ -13,7 +13,7 @@ const mapperTypesArray: { [key: string]: Function } = {
   boolean: (value: boolean | number) => `${value}`,
   number: (value: boolean | number) => `${value}`,
   object: (value: object, level: number) =>
-    Array.isArray(value) ? `[${buildArrayData(value)}]` : `{${biuldJsonToData(value)}}`,
+    Array.isArray(value) ? `[${buildArrayData(value)}]` : `{${buildJsonToData(value)}}`,
 };
 const buildArrayData = (arrayData: any[]): string => {
   let result = '';
@@ -32,7 +32,7 @@ const buildArrayData = (arrayData: any[]): string => {
   return result;
 };
 
-export const biuldJsonToData = (jsonData: any, level = 0) => {
+export const buildJsonToData = (jsonData: any, level = 0) => {
   let result = '';
   Object.keys(jsonData).forEach((key: string, index) => {
     const value = jsonData[key];

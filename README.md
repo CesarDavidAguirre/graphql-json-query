@@ -2,7 +2,18 @@
 
 > Library for transform object json in query or mutation graphql without variables
 
-JSON TO QUERY (type query)
+<hr>
+
+**Examples**:
+
+1. [Query type query](#id1)
+2. [Query type mutation](#id2)
+3. [Query owners](#id3)
+4. [Multiple queries](#id4)
+
+<hr>
+
+### JSON TO QUERY (type query) <a name="id1"></a>
 
 ```typescript
 import { jsonToQuery } from 'graphql-json-query';
@@ -27,13 +38,15 @@ return jsonToQuery({
 });
 ```
 
-RESPONSE
+### RESPONSE
 
 ```graphql
 query {test(data: {testString: "hello", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hello3", testNumber2: 57}}){Id name options : {  data  example  } }}
 ```
 
-JSON TO QUERY (type mutation)
+<hr>
+
+### JSON TO QUERY (type mutation) <a name="id2"></a>
 
 ```typescript
 import { jsonToMutation } from 'graphql-json-query';
@@ -58,13 +71,15 @@ return jsonToMutation({
 });
 ```
 
-RESPONSE
+### RESPONSE
 
 ```graphql
 mutation {test(data: {testString: "hello", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hello3", testNumber2: 57}}){Id name options : {  data  example  } }}
 ```
 
-JSON TO QUERY (type own)
+<hr>
+
+### JSON TO QUERY (type own) <a name="id3"></a>
 
 ```typescript
 import { jsonToQueryOwn } from 'graphql-json-query';
@@ -89,13 +104,15 @@ return jsonToQueryOwn('testQuery', {
 });
 ```
 
-RESPONSE
+### RESPONSE
 
 ```graphql
 testQuery {test(data: {testString: "hello", testNumber: 56, testBoolean: true, testNull: null, testArray: ["aaa", "bbb"], testjson: {testString2: "hello3", testNumber2: 57}}){Id name options : {  data  example  } }}
 ```
 
-MULTIPLE QUERYS EXAMPLE
+<hr>
+
+### MULTIPLE QUERYS EXAMPLE <a name="id4"></a>
 
 > this work in all cases
 
@@ -117,7 +134,7 @@ return jsonToQuery([{
 }]);}
 ```
 
-RESPONSE
+### RESPONSE
 
 ```graphql
 query {
