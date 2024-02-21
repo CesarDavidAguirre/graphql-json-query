@@ -1,6 +1,6 @@
 {
   "name": "graphql-json-query",
-  "version": "0.1.2",
+  "version": "0.2.2",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "build": "tsc",
     "start": "npm run build && node ./dist/index.js",
     "lint": "eslint src/**/*.ts",
-    "format": "eslint src/**/*.ts --fix"
+    "format": "eslint src/**/*.ts --fix",
+    "update": ""
   },
   "author": "cesar aguirre (kaiser)",
   "license": "MIT",
